@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quizlet.Quizes">
+    <HBox fx:id="ChooseDirrectory" spacing="100" >
+        <Label text="Выберите тему"></Label>
+        <ComboBox fx:id="ChooseDirrectoryCombo" promptText="Выберите тему" onAction="#handleDirrectorySelection"/>
+    </HBox>
+    <HBox fx:id="ChooseTicket" spacing="100">
+        <Label text="Выберите билет"></Label>
+        <ComboBox fx:id="ChooseTicketCombo" promptText="Выберите билет" onAction="#handleTicketSelection"/>
+    </HBox>
+    <HBox fx:id="Quize" spacing="20">
+        <Label fx:id="QuestionLabel"/>
+        <TextArea fx:id="Answer" wrapText="true" promptText="Введите ответ"/>
+        <Button fx:id="Clue"></Button>
+        <VBox>
+            <Button fx:id="Next"></Button>
+            <Button fx:id="Previous"></Button>
+        </VBox>
+    </HBox>
+</VBox>
