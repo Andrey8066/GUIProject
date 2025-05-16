@@ -4,8 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class Quizes {
     @FXML
@@ -14,7 +16,8 @@ public class Quizes {
     private ComboBox<String> ChooseTicketCombo;
     @FXML
     private Label QuestionLabel;
-
+    @FXML
+    private TextArea TextArea;
     private Topics topics;
     private Questions questions;
         
@@ -41,21 +44,26 @@ public class Quizes {
         }
     }
     @FXML
-    public void handleTicketSelection(){
-        QuestionLabel.setText(this.questions.getQuestionByName(ChooseTicketCombo.getValue()).getName());
+    public void handleTicketSelection() throws SQLException{
+        QuestionLabel.setText(this.questions.getQuestionByName(ChooseTicketCombo.getValue()).getQuestion());
     }
     @FXML
     public void handleDirrectorySelection(){
         ChooseTicketCombo.getItems().clear();
         try {
-            for (Question question : this.questions.getAll()){
-                System.out.println(this.topics.getTopicByName(ChooseDirrectoryCombo.getValue()).getName());
-                if (question.getTopic() == this.topics.getTopicByName(ChooseDirrectoryCombo.getValue()).getId()){
-                ChooseTicketCombo.getItems().add(new String(question.getName()));}
+            for (String questionName : this.questions.getQuestionByTopic(ChooseDirrectoryCombo.getValue())){
+                System.out.println(questionName);
+                ChooseTicketCombo.getItems().add(new String(questionName));
             }
         }
         catch (Exception e){
             System.out.println(e);
         }
+    }
+    @FXML
+    public void handleNextButton() throws SQLException{
+        Statistics statistics = new Statistics();
+        statistics.addRes(this.TextArea.getText(), Integer.parseInt(questions.getIdByName(this.ChooseTicketCombo.getValue())));
+
     }
 }

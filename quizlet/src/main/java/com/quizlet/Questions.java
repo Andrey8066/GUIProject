@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class Questions {
     protected ArrayList<Question> questions =  new ArrayList<Question>();
-
+    protected Database d;
     public Questions() throws SQLException{
-        Database d = new Database("jdbc:postgresql://127.0.0.1:5432/topics", "postgres", "123456");
+        d = new Database("jdbc:postgresql://127.0.0.1:5432/topics", "postgres", "123456");
 
         for (String[] row : d.getAll("questions")){
             this.questions.add(new Question(row[0], row[1], row[2], row[3], row[4]));
@@ -18,12 +18,19 @@ public class Questions {
         return this.questions;
     }
 
-    public Question getQuestionByName(String name){
-        for (Question question : this.questions){
-            if (question.getName() == name) return question;
-        }
-        return null;
+    public Question getQuestionByName(String name) throws SQLException{
+        String[] questionSettings = this.d.getAllByParam("questions", "name", name).get(0);
+        return new Question(questionSettings[0], questionSettings[1], questionSettings[2], questionSettings[3], questionSettings[4]);
     }
+
+    public String getIdByName(String name) throws SQLException{
+        String id = this.d.getDataByParam("questions", "id", "name", name).get(0)[0];
+        return id;
+    }
+
+    public ArrayList<String> getQuestionByTopic(String name) throws SQLException{
+        return this.d.getDataByParamWithJoin("questions", "topics", "questions.topic = topics.id", "name", "topics.name", name);
+        }
 }
 class Question {
     protected int id;

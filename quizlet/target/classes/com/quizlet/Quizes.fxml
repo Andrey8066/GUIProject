@@ -12,13 +12,10 @@
         <Label text="Выберите билет"></Label>
         <ComboBox fx:id="ChooseTicketCombo" promptText="Выберите билет" onAction="#handleTicketSelection"/>
     </HBox>
-    <HBox fx:id="Quize" spacing="20">
-        <Label fx:id="QuestionLabel"/>
+    <Label fx:id="QuestionLabel"/>
+    <HBox fx:id="Quize" spacing="20">        
         <TextArea fx:id="Answer" wrapText="true" promptText="Введите ответ"/>
-        <Button fx:id="Clue"></Button>
-        <VBox>
-            <Button fx:id="Next"></Button>
-            <Button fx:id="Previous"></Button>
-        </VBox>
+        <Button fx:id="Clue">Подсказка</Button>
     </HBox>
+    <Button fx:id="Next" onAction="#handleNextButton">Следующий</Button>
 </VBox>
