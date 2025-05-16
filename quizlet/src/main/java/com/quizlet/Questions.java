@@ -7,7 +7,7 @@ public class Questions {
     protected ArrayList<Question> questions =  new ArrayList<Question>();
     protected Database d;
     public Questions() throws SQLException{
-        d = new Database("jdbc:postgresql://127.0.0.1:5432/topics", "postgres", "123456");
+        d = new Database("jdbc:postgresql://138.124.113.97:5432/guipdatabase", "postgres", "123456");
 
         for (String[] row : d.getAll("questions")){
             this.questions.add(new Question(row[0], row[1], row[2], row[3], row[4]));
