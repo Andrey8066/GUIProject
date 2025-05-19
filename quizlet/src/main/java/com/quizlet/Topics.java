@@ -3,11 +3,14 @@ package com.quizlet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javafx.scene.chart.PieChart.Data;
+
 public class Topics {
     protected ArrayList<Topic> topics =  new ArrayList<Topic>();
+    protected Database d;
 
     public Topics() throws SQLException{
-        Database d = new Database("jdbc:postgresql://138.124.113.97:5432/guipdatabase", "postgres", "123456");
+        this.d = new Database("jdbc:postgresql://10.8.0.1:5432/guipdatabase", "postgres", "123456");
 
         for (String[] row : d.getAll("topics")){
             this.topics.add(new Topic(row[0], row[1]));
@@ -24,6 +27,14 @@ public class Topics {
         }
         return null;
     }
+
+    public String getIdByName(String name) throws SQLException{
+        return this.d.getDataByParam("topics", "id", "name", "'" + name + "'").get(0)[0];
+    }
+    public void addNewTopic(String name) throws SQLException{
+        this.d.insertIntoDatabase("topics", "name", "'"+name+"'");
+    }
+
     public void print(){
         for (int i = 0; i < this.topics.size(); i++){
             this.topics.get(i).print();
@@ -38,7 +49,6 @@ class Topic {
 
         this.Name = name;
         this.id = Integer.parseInt(id);
-        print();
     }
 
     public int getId() {

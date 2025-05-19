@@ -2,14 +2,20 @@ package com.quizlet;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.stage.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class Quizes {
+
+
+public class QuizesController {
     @FXML
     private ComboBox<String> ChooseDirrectoryCombo;
     @FXML
@@ -17,14 +23,18 @@ public class Quizes {
     @FXML
     private Label QuestionLabel;
     @FXML
-    private TextArea TextArea;
+    private TextArea Answer;
     private Topics topics;
     private Questions questions;
+    private Statistics statistics;
+    private int question_id;
+    private Question question;
         
     @FXML
     public void initialize() throws Exception{
         this.topics = new Topics();
         this.questions = new Questions();
+        statistics = new Statistics();
         for (Topic topic : this.topics.getAll()){
             ChooseDirrectoryCombo.getItems().add(new String(topic.getName()));
         }
@@ -45,14 +55,15 @@ public class Quizes {
     }
     @FXML
     public void handleTicketSelection() throws SQLException{
-        QuestionLabel.setText(this.questions.getQuestionByName(ChooseTicketCombo.getValue()).getQuestion());
+        this.question = this.questions.getQuestionByName(ChooseTicketCombo.getValue());
+        QuestionLabel.setText(question.getQuestion());
+
     }
     @FXML
     public void handleDirrectorySelection(){
         ChooseTicketCombo.getItems().clear();
         try {
-            for (String questionName : this.questions.getQuestionByTopic(ChooseDirrectoryCombo.getValue())){
-                System.out.println(questionName);
+            for (String questionName : this.questions.getNameByTopic(ChooseDirrectoryCombo.getValue())){
                 ChooseTicketCombo.getItems().add(new String(questionName));
             }
         }
@@ -61,9 +72,35 @@ public class Quizes {
         }
     }
     @FXML
-    public void handleNextButton() throws SQLException{
-        Statistics statistics = new Statistics();
-        statistics.addRes(this.TextArea.getText(), Integer.parseInt(questions.getIdByName(this.ChooseTicketCombo.getValue())));
+    public void handleNextButton() throws Exception{
+        save();
+    }
 
+    @FXML
+    public void handleMainMenuButton() throws SQLException{
+        try {
+            App.setRoot("Welcome");
+        }
+        catch (IOException e){
+            System.err.println(e);
+        }
+    }
+
+    public void save() throws Exception{
+        Stage checkAnswerstage = new Stage();
+        
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("checkAnswer.fxml"));
+        Parent root = loader.load();
+        
+        // Получаем контроллер и передаем параметры
+        CheckAnswerController controller = loader.getController();
+        controller.initData(this.question.getAnswer(), this.question.getId(), this.Answer.getText());
+
+        this.Answer.clear();
+        this.QuestionLabel.setText(null);
+
+        checkAnswerstage.setScene(new Scene(root));
+        checkAnswerstage.show();
     }
 }

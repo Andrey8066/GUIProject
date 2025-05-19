@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quizlet.NewQuizController">
+    <HBox fx:id="ChooseDirrectory" spacing="100" >
+        <Label text="Выберите тему"></Label>
+        <ComboBox fx:id="ChooseDirrectoryCombo" promptText="Выберите тему" onAction="#handleDirrectorySelection"/>
+    </HBox>
+    <VBox fx:id = "NewQuizVBox">
+        <HBox><Label>Введите вопрос </Label> <TextArea fx:id= "NewQuizQuestion"> </TextArea></HBox>
+        <HBox><Label>Введите название для вопроса </Label> <TextArea fx:id= "NewQuizName"> </TextArea></HBox>
+        <HBox><Label>Введите ответ на вопрос </Label> <TextArea fx:id= "NewQuizAnswer"> </TextArea></HBox>
+    </VBox>
+    <Button fx:id="saveQuiz" onAction="#handleSaveQuizButton"> Сохранить квиз </Button>
+    <Button fx:id="mainmenu" onAction="#handleMainMenuButton" style="-fx-background-color: #ff0000; -fx-text-fill: black" StackPane.alignment="BOTTOM_CENTER"> Главное меню </Button>
+</VBox>

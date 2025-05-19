@@ -23,7 +23,6 @@ public class Database {
         
         while (r.next()) {
             String[] row = new String[r.getMetaData().getColumnCount()];
-            System.out.println(r.getMetaData().getColumnCount());
             for (int i = 0; i < r.getMetaData().getColumnCount(); i++)
             {
                 row[i] = r.getString(i+1);
@@ -53,6 +52,7 @@ public class Database {
 
     public ArrayList<String[]> getDataByParam(String table, String data, String param, String value) throws SQLException{
         ArrayList <String[]> lines = new ArrayList<>();
+        System.out.println("SELECT " + data + " FROM " + table + " WHERE " + param + "=" + value);
         ResultSet r = this.statement.executeQuery("SELECT " + data + " FROM " + table + " WHERE " + param + "=" + value);
         
         while (r.next()) {
@@ -76,5 +76,14 @@ public class Database {
         }
         return lines;
     }    
+
+    public void insertIntoDatabase(String table1, String values_names, String values) throws SQLException{
+        System.out.println("INSERT INTO " + table1 + " (" + values_names + ") VALUES (" + values +")");
+        this.statement.execute("INSERT INTO " + table1 + " (" + values_names + ") VALUES (" + values +")");
+    }
    
+
+    public void updateValueInDatabase(String table1, String value_name, String value, String param, String paramValue) throws SQLException{
+        this.statement.execute("UPDATE " + table1 + " SET " + value_name + " = " + value +" WHERE " + param + " = " + paramValue);
+    }
 }

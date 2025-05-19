@@ -7,7 +7,7 @@ public class Questions {
     protected ArrayList<Question> questions =  new ArrayList<Question>();
     protected Database d;
     public Questions() throws SQLException{
-        d = new Database("jdbc:postgresql://138.124.113.97:5432/guipdatabase", "postgres", "123456");
+        d = new Database("jdbc:postgresql://10.8.0.1:5432/guipdatabase", "postgres", "123456");
 
         for (String[] row : d.getAll("questions")){
             this.questions.add(new Question(row[0], row[1], row[2], row[3], row[4]));
@@ -24,13 +24,27 @@ public class Questions {
     }
 
     public String getIdByName(String name) throws SQLException{
-        String id = this.d.getDataByParam("questions", "id", "name", name).get(0)[0];
+        String id = this.d.getDataByParam("questions", "id", "name", "'" + name + "'").get(0)[0];
         return id;
     }
+    public String getNameById(String id) throws SQLException{
+        String name = this.d.getDataByParam("questions", "name", "id", "'" + id + "'").get(0)[0];
+        return name;
+    }
 
-    public ArrayList<String> getQuestionByTopic(String name) throws SQLException{
+    public ArrayList<String> getNameByTopic(String name) throws SQLException{
         return this.d.getDataByParamWithJoin("questions", "topics", "questions.topic = topics.id", "name", "topics.name", name);
-        }
+    }
+
+    public ArrayList<String> getIdByTopic(String name) throws SQLException{
+        return this.d.getDataByParamWithJoin("questions", "topics", "questions.topic = topics.id", "id", "topics.name", name);
+    }
+
+    public void addNewQuestion(String question, String name, String answer, String topic) throws SQLException{
+
+        this.d.insertIntoDatabase("questions", "question, name, answer, topic", "'"+question+"','"+name+"','"+answer+"','"+topic+"'");
+    }
+
 }
 class Question {
     protected int id;
@@ -45,7 +59,6 @@ class Question {
         this.id = Integer.parseInt(id);
         this.topic = Integer.parseInt(topic);
         this.answer = answer;
-        print();
     }
 
     public int getId() {
@@ -62,6 +75,10 @@ class Question {
 
     public int getTopic() {
         return this.topic;
+    }
+
+    public String getAnswer() {
+        return answer;
     }
 
     public void print(){
