@@ -3,8 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quizlet.CheckAnswerController">
-    <HBox fx:id="RightAnswerBox" spacing="100" >
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="com.quizlet.CheckAnswerController">
+    <HBox fx:id="RightAnswerBox" spacing="100">
         <Label text="Правильный ответ:"></Label>
         <Label fx:id="RightAnswer"></Label>
     </HBox>
@@ -14,6 +15,6 @@
     </HBox>
     <HBox>
         <Button fx:id="RightAnswerButton" onAction="#handleRightAnswerButton">Ответ верен</Button>
-        <Button fx:id="WrongAnswerButton" onAction="#handleWrongAnswerButton" > Ответ неверен </Button>
+        <Button fx:id="WrongAnswerButton" onAction="#handleWrongAnswerButton"> Ответ неверен </Button>
     </HBox>
 </VBox>

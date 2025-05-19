@@ -13,8 +13,6 @@ import javafx.stage.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
-
-
 public class QuizesController {
     @FXML
     private ComboBox<String> ChooseDirrectoryCombo;
@@ -26,73 +24,70 @@ public class QuizesController {
     private TextArea Answer;
     private Topics topics;
     private Questions questions;
-    private Statistics statistics;
-    private int question_id;
     private Question question;
-        
+
     @FXML
-    public void initialize() throws Exception{
+    public void initialize() throws Exception {
         this.topics = new Topics();
         this.questions = new Questions();
-        statistics = new Statistics();
-        for (Topic topic : this.topics.getAll()){
+        for (Topic topic : this.topics.getAll()) {
             ChooseDirrectoryCombo.getItems().add(new String(topic.getName()));
         }
 
-        for (Question question : this.questions.getAll()){
+        for (Question question : this.questions.getAll()) {
             ChooseTicketCombo.getItems().add(new String(question.getName()));
         }
-        
+
     }
-    @FXML    
-    public void buttonAction(int id, ActionEvent event){
+
+    @FXML
+    public void buttonAction(int id, ActionEvent event) {
         try {
             App.setRoot("/com/quizlet/SecondScene.fxml");
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             System.err.println(e);
         }
     }
+
     @FXML
-    public void handleTicketSelection() throws SQLException{
+    public void handleTicketSelection() throws SQLException {
         this.question = this.questions.getQuestionByName(ChooseTicketCombo.getValue());
         QuestionLabel.setText(question.getQuestion());
 
     }
+
     @FXML
-    public void handleDirrectorySelection(){
+    public void handleDirrectorySelection() {
         ChooseTicketCombo.getItems().clear();
         try {
-            for (String questionName : this.questions.getNameByTopic(ChooseDirrectoryCombo.getValue())){
+            for (String questionName : this.questions.getNameByTopic(ChooseDirrectoryCombo.getValue())) {
                 ChooseTicketCombo.getItems().add(new String(questionName));
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
+
     @FXML
-    public void handleNextButton() throws Exception{
+    public void handleNextButton() throws Exception {
         save();
     }
 
     @FXML
-    public void handleMainMenuButton() throws SQLException{
+    public void handleMainMenuButton() throws SQLException {
         try {
             App.setRoot("Welcome");
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             System.err.println(e);
         }
     }
 
-    public void save() throws Exception{
+    public void save() throws Exception {
         Stage checkAnswerstage = new Stage();
-        
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("checkAnswer.fxml"));
         Parent root = loader.load();
-        
+
         // Получаем контроллер и передаем параметры
         CheckAnswerController controller = loader.getController();
         controller.initData(this.question.getAnswer(), this.question.getId(), this.Answer.getText());

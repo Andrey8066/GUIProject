@@ -12,7 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class StatisticsController {
-     @FXML
+    @FXML
     private ComboBox<String> ChooseDirrectoryCombo;
     @FXML
     private VBox StatisticsVBox;
@@ -21,47 +21,44 @@ public class StatisticsController {
     private Topics topics;
     private Questions questions;
     private Statistics statistics;
-    private int question_id;
-    private Question question;
-        
+
     @FXML
-    public void initialize() throws Exception{
+    public void initialize() throws Exception {
         this.topics = new Topics();
         this.questions = new Questions();
         statistics = new Statistics();
-        for (Topic topic : this.topics.getAll()){
+        for (Topic topic : this.topics.getAll()) {
             ChooseDirrectoryCombo.getItems().add(new String(topic.getName()));
-        }        
+        }
     }
+
     @FXML
-    public void handleDirrectorySelection(){
+    public void handleDirrectorySelection() {
         StatisticsVBox.getChildren().clear();
         try {
             boolean f = true;
-            for (String  question_id : this.questions.getIdByTopic(ChooseDirrectoryCombo.getValue())){
+            for (String question_id : this.questions.getIdByTopic(ChooseDirrectoryCombo.getValue())) {
                 System.out.println(question_id);
                 HBox statisticHBox = new HBox();
                 Label ticketName = new Label(questions.getNameById(question_id));
-                Label percent = new Label(statistics.getPercentByQuestionId(question_id)+ " %" );
+                Label percent = new Label(statistics.getPercentByQuestionId(question_id) + " %");
                 statisticHBox.getChildren().addAll(ticketName, percent);
                 StatisticsVBox.getChildren().add(statisticHBox);
                 f = false;
             }
-            if (f){
-            StatisticsVBox.getChildren().add(new Label("Вы еще не проходили вопросы по этой теме"));
+            if (f) {
+                StatisticsVBox.getChildren().add(new Label("Вы еще не проходили вопросы по этой теме"));
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
 
     @FXML
-    public void handleMainMenuButton() throws SQLException{
+    public void handleMainMenuButton() throws SQLException {
         try {
             App.setRoot("Welcome");
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             System.err.println(e);
         }
     }

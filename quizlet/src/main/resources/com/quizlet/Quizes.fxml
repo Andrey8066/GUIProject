@@ -3,20 +3,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quizlet.QuizesController">
-    <HBox fx:id="ChooseDirrectory" spacing="100" >
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="com.quizlet.QuizesController">
+    <HBox fx:id="ChooseDirrectory" spacing="100">
         <Label text="Выберите тему"></Label>
-        <ComboBox fx:id="ChooseDirrectoryCombo" promptText="Выберите тему" onAction="#handleDirrectorySelection"/>
+        <ComboBox fx:id="ChooseDirrectoryCombo" promptText="Выберите тему"
+            onAction="#handleDirrectorySelection" />
     </HBox>
     <HBox fx:id="ChooseTicket" spacing="100">
         <Label text="Выберите билет"></Label>
-        <ComboBox fx:id="ChooseTicketCombo" promptText="Выберите билет" onAction="#handleTicketSelection"/>
+        <ComboBox fx:id="ChooseTicketCombo" promptText="Выберите билет"
+            onAction="#handleTicketSelection" />
     </HBox>
-    <Label fx:id="QuestionLabel"/>
-    <HBox fx:id="Quize" spacing="20">        
-        <TextArea fx:id="Answer" wrapText="true" promptText="Введите ответ"/>
+    <Label fx:id="QuestionLabel" />
+    <HBox fx:id="Quize" spacing="20">
+        <TextArea fx:id="Answer" wrapText="true" promptText="Введите ответ" />
         <Button fx:id="Clue">Подсказка</Button>
     </HBox>
     <Button fx:id="Next" onAction="#handleNextButton">Сохранить</Button>
-    <Button fx:id="mainmenu" onAction="#handleMainMenuButton" style="-fx-background-color: #ff0000; -fx-text-fill: black" StackPane.alignment="BOTTOM_CENTER"> Главное меню </Button>
+    <Button fx:id="mainmenu" onAction="#handleMainMenuButton"
+        style="-fx-background-color: #ff0000; -fx-text-fill: black"
+        StackPane.alignment="BOTTOM_CENTER"> Главное меню </Button>
 </VBox>
