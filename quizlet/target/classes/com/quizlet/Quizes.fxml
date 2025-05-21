@@ -22,6 +22,5 @@
     </HBox>
     <Button fx:id="Next" onAction="#handleNextButton">Сохранить</Button>
     <Button fx:id="mainmenu" onAction="#handleMainMenuButton"
-        style="-fx-background-color: #ff0000; -fx-text-fill: black"
         StackPane.alignment="BOTTOM_CENTER"> Главное меню </Button>
 </VBox>
