@@ -19,6 +19,7 @@ public class Welcome {
 
     private static Scene scene;
 
+
     @FXML
     public void newQuiz() throws Exception {
         App.setRoot("NewQuiz");

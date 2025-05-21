@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,7 +27,9 @@ public class App extends Application {
     }
 
     static void setRoot(String fxml) throws IOException {
+        String styles = scene.getStylesheets().get(0);
         scene.setRoot(loadFXML(fxml));
+        scene.getStylesheets().add(styles);
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
