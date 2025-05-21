@@ -18,6 +18,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         scene = new Scene(FXMLLoader.load(getClass().getResource("/com/quizlet/Welcome.fxml")));
+        scene.getStylesheets().add(getClass().getResource("/com/quizlet/style.css").toExternalForm());
         stage.setHeight(1000);
         stage.setHeight(500);
         stage.setScene(scene);

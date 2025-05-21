@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Welcome {
@@ -13,18 +14,10 @@ public class Welcome {
     @FXML
     private Button themeToggleButton;
 
+    @FXML
+    private StackPane StackPane;
+
     private static Scene scene;
-
-
-    /*@FXML 
-    public void initialize(){
-        Platform.runLater(() -> 
-        {
-            this.scene = themeToggleButton.getScene();
-            scene.getStylesheets().add(getClass().getResource("scene.css").toExternalForm());
-        });
-        
-    }*/
 
     @FXML
     public void newQuiz() throws Exception {
@@ -44,13 +37,11 @@ public class Welcome {
     @FXML
     private void toggleTheme() {
         
-        this.scene = themeToggleButton.getScene();
+        this.scene = StackPane.getScene();
         if (scene == null) return;
-
+        boolean check = scene.getStylesheets().get(0).contains("style.css");
         scene.getStylesheets().clear();
-        if (darkTheme) {
-            System.out.println("toggleTheme");
-            
+        if (check) {
             scene.getStylesheets().add(getClass().getResource("/com/quizlet/light-theme.css").toExternalForm());
             themeToggleButton.setText("☀");
         } else {
