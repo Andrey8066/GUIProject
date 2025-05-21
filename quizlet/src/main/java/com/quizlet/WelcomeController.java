@@ -2,7 +2,7 @@ package com.quizlet;
 
 import javafx.fxml.FXML;
 
-public class Welcome {
+public class WelcomeController {
 
     @FXML
     public void newQuiz() throws Exception {

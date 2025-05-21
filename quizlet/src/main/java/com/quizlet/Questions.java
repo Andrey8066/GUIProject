@@ -3,11 +3,11 @@ package com.quizlet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Questions {
+public class Questions {  // Класс для работы с темами квизов
     protected ArrayList<Question> questions = new ArrayList<Question>();
     protected Database d;
 
-    public Questions() throws SQLException {
+    public Questions() throws SQLException { // Конструктор класса
         d = new Database("jdbc:postgresql://10.8.0.1:5432/guipdatabase", "postgres", "123456");
 
         for (String[] row : d.getAll("questions")) {
@@ -15,37 +15,37 @@ public class Questions {
         }
     }
 
-    public ArrayList<Question> getAll() {
+    public ArrayList<Question> getAll() { // Метод для получения всех объектов Question
         return this.questions;
     }
 
-    public Question getQuestionByName(String name) throws SQLException {
+    public Question getQuestionByName(String name) throws SQLException { // Метод для получения объекта Question  по названию вопроса
         String[] questionSettings = this.d.getAllByParam("questions", "name", name).get(0);
         return new Question(questionSettings[0], questionSettings[1], questionSettings[2], questionSettings[3],
                 questionSettings[4]);
     }
 
-    public String getIdByName(String name) throws SQLException {
+    public String getIdByName(String name) throws SQLException { // Метод для получения id объекта Question по названию
         String id = this.d.getDataByParam("questions", "id", "name", "'" + name + "'").get(0)[0];
         return id;
     }
 
-    public String getNameById(String id) throws SQLException {
+    public String getNameById(String id) throws SQLException { // Метод для получения названия объекта Question по id
         String name = this.d.getDataByParam("questions", "name", "id", "'" + id + "'").get(0)[0];
         return name;
     }
 
-    public ArrayList<String> getNameByTopic(String name) throws SQLException {
+    public ArrayList<String> getNameByTopic(String name) throws SQLException { // Метод для получения названий всех объектов Question по теме
         return this.d.getDataByParamWithJoin("questions", "topics", "questions.topic = topics.id", "name",
                 "topics.name", name);
     }
 
-    public ArrayList<String> getIdByTopic(String name) throws SQLException {
+    public ArrayList<String> getIdByTopic(String name) throws SQLException { // Метод для получения id всех объектов Question по теме
         return this.d.getDataByParamWithJoin("questions", "topics", "questions.topic = topics.id", "id", "topics.name",
                 name);
     }
 
-    public void addNewQuestion(String question, String name, String answer, String topic) throws SQLException {
+    public void addNewQuestion(String question, String name, String answer, String topic) throws SQLException { // Метод для добавления нового вопроса
 
         this.d.insertIntoDatabase("questions", "question, name, answer, topic",
                 "'" + question + "','" + name + "','" + answer + "','" + topic + "'");
@@ -53,7 +53,7 @@ public class Questions {
 
 }
 
-class Question {
+class Question { // Класс объекта Question
     protected int id;
     protected String question;
     protected String name;
