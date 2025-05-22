@@ -2,6 +2,36 @@
     -fx-background-color: rgb(20, 20, 20);
 }
 
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+
+.combo-box {
+    -fx-background-color: rgb(46, 46, 46);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 6;
+    -fx-padding: 4 10;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: white;
+    -fx-background-color: rgb(46, 46, 46);
+}
+
+.combo-box:hover {
+    -fx-background-color: rgb(70, 70, 70);
+}
+
+.text-area {
+    -fx-background-color: rgb(30, 30, 30);
+    -fx-control-inner-background: rgb(30, 30, 30);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 6;
+}
+
 .button {
     -fx-font-size: 15px;
     -fx-text-fill: white;
@@ -16,14 +46,7 @@
 
 .button:hover {
     -fx-background-color: rgb(70, 70, 70);
-    -fx-text-fill: white;
     -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.6), 10, 0.5, 0, 2);
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
-}
-
-.theme-toggle {
-    -fx-background-color: transparent;
-    -fx-text-fill: white;
-    -fx-font-size: 18px;
 }
