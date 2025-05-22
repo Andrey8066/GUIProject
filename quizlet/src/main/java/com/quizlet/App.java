@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,6 +19,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        Font.loadFont(getClass().getResource("/fonts/Baumans-Regular.ttf").toExternalForm(), 12);
         scene = new Scene(FXMLLoader.load(getClass().getResource("/com/quizlet/Welcome.fxml")));
         scene.getStylesheets().add(getClass().getResource("/com/quizlet/style.css").toExternalForm());
         stage.setHeight(1000);

@@ -1,5 +1,7 @@
 .root {
     -fx-background-color: rgb(20, 20, 20);
+    -fx-font-family: 'Baumans';
+    -fx-font-size: 20px;
 }
 
 .label {
@@ -38,15 +40,23 @@
     -fx-background-color: rgb(46, 46, 46);
     -fx-background-radius: 10;
     -fx-padding: 10 20;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0.3, 0, 1);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 3, 0.3, 0, 1);
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease-in-out;
     -fx-scale-x: 1;
     -fx-scale-y: 1;
-    -fx-cursor: hand;
 }
 
 .button:hover {
-    -fx-background-color: rgb(70, 70, 70);
-    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.6), 10, 0.5, 0, 2);
-    -fx-scale-x: 1.05;
-    -fx-scale-y: 1.05;
+    -fx-background-color: rgb(60, 60, 60);
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.2), 4, 0.3, 0, 1);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.button:pressed {
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+    -fx-background-color: rgb(38, 38, 38);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 2, 0.3, 0, 0);
 }

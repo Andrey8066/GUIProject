@@ -9,7 +9,6 @@
       fx:controller="com.quizlet.QuizesController"
       spacing="15"
       alignment="TOP_CENTER"
-      stylesheets="@style.css"
       styleClass="root">
 
     <padding>
