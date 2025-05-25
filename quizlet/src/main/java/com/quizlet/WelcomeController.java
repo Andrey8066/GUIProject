@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.stage.FileChooser;
 
 public class WelcomeController {
 
@@ -91,5 +92,26 @@ public class WelcomeController {
     @FXML
     public void exportQuizes() throws Exception {
         filework.exportData();
+    }
+
+    @FXML
+    public void importQuizes() throws Exception {
+       FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Выберите файл");
+        
+        // Установка начальной директории
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        
+        // Добавление фильтров расширений
+        fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("Текстовые файлы", "*.txt"),
+            new FileChooser.ExtensionFilter("Все файлы", "*.*")
+        );
+        
+        // Открытие диалога выбора файла
+        File selectedFile = fileChooser.showOpenDialog(StackPane.getScene().getWindow());
+
+        filework.importData(selectedFile);
+        
     }
 }
