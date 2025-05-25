@@ -1,13 +1,35 @@
 .root {
     -fx-background-color: rgb(20, 20, 20);
     -fx-font-family: 'Baumans';
-    -fx-font-size: 20px;
+    -fx-font-size: 16px;
 }
 
 .label {
     -fx-text-fill: white;
     -fx-font-size: 16px;
 }
+
+.theme-toggle {
+    -fx-background-color: transparent !important;
+    -fx-background-radius: 0 !important;
+    -fx-border-color: transparent !important;
+    -fx-border-width: 0 !important;
+    -fx-padding: 0 !important;
+    -fx-background-insets: 0 !important;
+    -fx-effect: none !important;
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+    -fx-scale-x: 1 !important;
+    -fx-scale-y: 1 !important;
+    -fx-cursor: hand;
+}
+
+.theme-toggle:hover,
+.theme-toggle:pressed {
+    -fx-background-color: transparent !important;
+    -fx-effect: none !important;
+}
+
 
 .combo-box {
     -fx-background-color: rgb(46, 46, 46);

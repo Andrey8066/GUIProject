@@ -1,6 +1,6 @@
 .root {
     -fx-font-family: 'Baumans';
-    -fx-font-size: 20px;
+    -fx-font-size: 16px;
     -fx-background-color: white;
 }
 
@@ -34,7 +34,12 @@
 }
 
 .theme-toggle {
-    -fx-background-color: transparent;
-    -fx-text-fill: black;
-    -fx-font-size: 18px;
+    -fx-background-color: transparent !important;
+    -fx-border-color: transparent !important;
+    -fx-padding: 0 !important;
+    -fx-background-insets: 0 !important;
+    -fx-effect: none !important;
+    -fx-scale-x: 1 !important;
+    -fx-scale-y: 1 !important;
+    -fx-cursor: hand;
 }
