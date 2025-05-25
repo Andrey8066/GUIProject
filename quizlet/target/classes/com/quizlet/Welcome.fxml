@@ -35,7 +35,7 @@
                 </HBox>
                 <HBox alignment="center">
                     <children>
-                        <Label text="БОТЯНЯ" class="Logo"></Label>
+                        <Label text="БОТЯНЯ" styleClass="Logo"></Label>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" spacing="10">
