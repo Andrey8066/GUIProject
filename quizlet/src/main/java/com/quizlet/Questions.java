@@ -3,7 +3,7 @@ package com.quizlet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Questions {  // Класс для работы с темами квизов
+public class Questions { // Класс для работы с темами квизов
     protected ArrayList<Question> questions = new ArrayList<Question>();
     protected Database d;
 
@@ -19,7 +19,8 @@ public class Questions {  // Класс для работы с темами кв
         return this.questions;
     }
 
-    public Question getQuestionByName(String name) throws SQLException { // Метод для получения объекта Question  по названию вопроса
+    public Question getQuestionByName(String name) throws SQLException { // Метод для получения объекта Question по
+                                                                         // названию вопроса
         String[] questionSettings = this.d.getAllByParam("questions", "name", name).get(0);
         return new Question(questionSettings[0], questionSettings[1], questionSettings[2], questionSettings[3],
                 questionSettings[4]);
@@ -35,17 +36,23 @@ public class Questions {  // Класс для работы с темами кв
         return name;
     }
 
-    public ArrayList<String> getNameByTopic(String name) throws SQLException { // Метод для получения названий всех объектов Question по теме
+    public ArrayList<String> getNameByTopic(String name) throws SQLException { // Метод для получения названий всех
+                                                                               // объектов Question по теме
         return this.d.getDataByParamWithJoin("questions", "topics", "questions.topic = topics.id", "name",
                 "topics.name", name);
     }
 
-    public ArrayList<String> getIdByTopic(String name) throws SQLException { // Метод для получения id всех объектов Question по теме
+    public ArrayList<String> getIdByTopic(String name) throws SQLException { // Метод для получения id всех объектов
+                                                                             // Question по теме
         return this.d.getDataByParamWithJoin("questions", "topics", "questions.topic = topics.id", "id", "topics.name",
                 name);
     }
 
-    public void addNewQuestion(String question, String name, String answer, String topic) throws SQLException { // Метод для добавления нового вопроса
+    public void addNewQuestion(String question, String name, String answer, String topic) throws SQLException { // Метод
+                                                                                                                // для
+                                                                                                                // добавления
+                                                                                                                // нового
+                                                                                                                // вопроса
 
         this.d.insertIntoDatabase("questions", "question, name, answer, topic",
                 "'" + question + "','" + name + "','" + answer + "','" + topic + "'");

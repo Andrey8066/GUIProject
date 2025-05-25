@@ -42,7 +42,7 @@ public class Topics { // Класс для работы с темами квиз
     }
 }
 
-class Topic { // Класс объекта  topic
+class Topic { // Класс объекта topic
     protected int id;
     protected String Name;
 

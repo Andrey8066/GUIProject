@@ -13,20 +13,20 @@ public class Statistic {
     }
 
     // Геттеры
-    public String getName() { 
+    public String getName() {
         return name.get();
     }
 
-    public String getPercent() { 
+    public String getPercent() {
         return percent.get();
     }
 
     // Сеттеры
-    public void setName(String name) { 
+    public void setName(String name) {
         this.name.set(name);
     }
 
-    public void setPercent(Float percent) { 
+    public void setPercent(Float percent) {
         this.percent.set(String.format("%.1f%%", percent));
     }
 

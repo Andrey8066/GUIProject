@@ -87,7 +87,7 @@ public class QuizesController {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("checkAnswer.fxml"));
         Parent root = loader.load();
-        
+
         CheckAnswerController controller = loader.getController();
         controller.initData(this.question.getAnswer(), this.question.getId(), this.Answer.getText());
 

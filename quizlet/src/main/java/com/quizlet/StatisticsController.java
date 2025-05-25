@@ -4,22 +4,14 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javafx.collections.ObservableArray;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -29,7 +21,7 @@ public class StatisticsController {
     @FXML
     private VBox StatisticsVBox;
     @FXML
-    private TableView <Statistic> StatisticsTable;
+    private TableView<Statistic> StatisticsTable;
     @FXML
     private TextArea Answer;
     @FXML
@@ -63,13 +55,14 @@ public class StatisticsController {
             String selectedTopic = ChooseDirrectoryCombo.getValue();
 
             ArrayList<Statistic> stats = statistics.getStat(selectedTopic);
-            for (Statistic stat : stats){
+            for (Statistic stat : stats) {
                 if (!stat.getPercent().contains("NaN")) {
                     System.out.println(stat.getPercent());
-                StatisticsTable.getItems().addAll(stat);
-                f+=1;}
+                    StatisticsTable.getItems().addAll(stat);
+                    f += 1;
                 }
-            if (f == 0){
+            }
+            if (f == 0) {
                 Stage noStatistics = new Stage();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("checkAnswer.fxml"));
                 Scene scene = new Scene(loader.load());
@@ -80,8 +73,7 @@ public class StatisticsController {
                 noStatistics.show();
 
             }
-            
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }

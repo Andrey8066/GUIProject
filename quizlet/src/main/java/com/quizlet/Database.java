@@ -17,7 +17,7 @@ public class Database { // Класс для работы с psql
 
     }
 
-    public ArrayList<String[]> getAll(String table) throws SQLException { // Метод для получения всех записей из таблицы 
+    public ArrayList<String[]> getAll(String table) throws SQLException { // Метод для получения всех записей из таблицы
         ArrayList<String[]> lines = new ArrayList<>();
         ResultSet r = this.statement.executeQuery("SELECT * FROM " + table);
 
@@ -32,7 +32,13 @@ public class Database { // Класс для работы с psql
         return lines;
     }
 
-    public ArrayList<String[]> getAllByParam(String table, String param, String value) throws SQLException { // Метод для получения всех записей по условию
+    public ArrayList<String[]> getAllByParam(String table, String param, String value) throws SQLException { // Метод
+                                                                                                             // для
+                                                                                                             // получения
+                                                                                                             // всех
+                                                                                                             // записей
+                                                                                                             // по
+                                                                                                             // условию
         ArrayList<String[]> lines = new ArrayList<>();
         ResultSet r = this.statement.executeQuery("SELECT * FROM " + table + " WHERE " + param + " = '" + value + "'");
 
@@ -48,9 +54,10 @@ public class Database { // Класс для работы с psql
         return lines;
     }
 
-    public ArrayList<String[]> getDataByParam(String table, String data, String param, String value) throws SQLException { // Метод для получения полей по условию
+    public ArrayList<String[]> getDataByParam(String table, String data, String param, String value)
+            throws SQLException { // Метод для получения полей по условию
         ArrayList<String[]> lines = new ArrayList<>();
-        
+
         ResultSet r = this.statement
                 .executeQuery("SELECT " + data + " FROM " + table + " WHERE " + param + "=" + value);
 
@@ -66,8 +73,9 @@ public class Database { // Класс для работы с psql
     }
 
     public ArrayList<String> getDataByParamWithJoin(String table1, String table2, String join, String data,
-            String param, String value) throws SQLException { // Метод для получения полей по условию с объединением нескольких таблиц
-            
+            String param, String value) throws SQLException { // Метод для получения полей по условию с объединением
+                                                              // нескольких таблиц
+
         ArrayList<String> lines = new ArrayList<>();
         ResultSet r = this.statement.executeQuery("SELECT " + table1 + "." + data + " FROM " + table1 + " JOIN "
                 + table2 + " ON " + join + "  WHERE " + param + " = '" + value + "'");
@@ -78,8 +86,10 @@ public class Database { // Класс для работы с psql
         return lines;
     }
 
-    public void insertIntoDatabase(String table1, String values_names, String values) throws SQLException { // Метод для записи в БД
-        
+    public void insertIntoDatabase(String table1, String values_names, String values) throws SQLException { // Метод для
+                                                                                                            // записи в
+                                                                                                            // БД
+
         this.statement.execute("INSERT INTO " + table1 + " (" + values_names + ") VALUES (" + values + ")");
     }
 
