@@ -28,6 +28,8 @@ public class StatisticsController {
     private TableColumn<Statistic, String> NameColumn;
     @FXML
     private TableColumn<Statistic, String> PercentColumn;
+    @FXML
+    private TableColumn<Statistic, String> TriesColumn;
     private Topics topics;
     private Questions questions;
     private Statistics statistics;
@@ -41,10 +43,12 @@ public class StatisticsController {
             ChooseDirrectoryCombo.getItems().add(new String(topic.getName()));
         }
 
-        NameColumn.setPrefWidth(200);
+        NameColumn.setPrefWidth(100);
         NameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         PercentColumn.setCellValueFactory(new PropertyValueFactory<>("percent"));
-        StatisticsTable.getColumns().addAll(NameColumn, PercentColumn);
+        TriesColumn.setCellValueFactory(new PropertyValueFactory<>("tries"));
+        StatisticsTable.getColumns().addAll(NameColumn, TriesColumn, PercentColumn);
+        
 
         StatisticsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }

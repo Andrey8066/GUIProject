@@ -32,9 +32,20 @@ public class Statistics { // Класс для работы с отслежив�
     public ArrayList<Statistic> getStat(String name) throws SQLException {
         ArrayList<Statistic> res = new ArrayList();
         for (String question_id : q.getIdByTopic(name)) {
-            res.add(new Statistic(q.getNameById(question_id), getPercentByQuestionId(question_id)));
+            res.add(new Statistic(q.getNameById(question_id), getTriesByQuestionId(question_id),
+                    getPercentByQuestionId(question_id)));
         }
         return res;
+    }
+
+    public int getTriesByQuestionId(String id) throws SQLException { // Метод для получения процента правильных
+        // решений по билету
+        String[] data = this.d.getDataByParam("statistics", "count_answers", "question_id", id)
+                .get(0);
+        int count_answers = Integer.parseInt(data[0]);
+
+        return count_answers;
+
     }
 
     public float getPercentByQuestionId(String id) throws SQLException { // Метод для получения процента правильных

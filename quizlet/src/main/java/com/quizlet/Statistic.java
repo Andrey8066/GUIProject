@@ -6,10 +6,12 @@ import javafx.beans.property.StringProperty;
 public class Statistic {
     private final StringProperty name;
     private final StringProperty percent;
+    private final StringProperty tries;
 
-    public Statistic(String name, Float percent) {
+    public Statistic(String name, int tries, Float percent) {
         this.name = new SimpleStringProperty(name);
         this.percent = new SimpleStringProperty(String.format("%.1f%%", percent));
+        this.tries = new SimpleStringProperty(Integer.toString(tries));
     }
 
     // Геттеры
@@ -21,7 +23,15 @@ public class Statistic {
         return percent.get();
     }
 
+    public String getTries() {
+        return tries.get();
+    }
+
     // Сеттеры
+    public void setTries(String tries) {
+        this.tries.set(tries);
+    }
+
     public void setName(String name) {
         this.name.set(name);
     }
@@ -37,5 +47,9 @@ public class Statistic {
 
     public StringProperty percentProperty() {
         return percent;
+    }
+
+    public StringProperty triesProperty() {
+        return tries;
     }
 }
