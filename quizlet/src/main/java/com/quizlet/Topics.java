@@ -31,6 +31,10 @@ public class Topics { // Класс для работы с темами квиз
         return this.d.getDataByParam("topics", "id", "name", "'" + name + "'").get(0)[0];
     }
 
+    public String getNameById(String id) throws SQLException { // Метод для получения названия темы по ее id
+        return this.d.getDataByParam("topics", "name", "id", "'" + id + "'").get(0)[0];
+    }
+
     public void addNewTopic(String name) throws SQLException { // Метод для добавления новой темы
         this.d.insertIntoDatabase("topics", "name", "'" + name + "'");
     }
