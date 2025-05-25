@@ -111,6 +111,7 @@
 }
 
 #logo {
+    -fx-font-family: 'Baumans';
     -fx-font-size: 30px;
 }
 
