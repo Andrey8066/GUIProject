@@ -51,7 +51,7 @@ public class QuizesController {
 
     @FXML
     public void handleTicketSelection() throws SQLException {
-        this.question = this.questions.getQuestionByName(ChooseTicketCombo.getValue());
+        this.question = this.questions.getQuestionByNameTopic(ChooseTicketCombo.getValue(), this.topics.getIdByName(ChooseDirrectoryCombo.getValue()));
         QuestionLabel.setText(question.getQuestion());
 
     }
@@ -62,6 +62,7 @@ public class QuizesController {
         try {
             for (String questionName : this.questions.getNameByTopic(ChooseDirrectoryCombo.getValue())) {
                 ChooseTicketCombo.getItems().add(new String(questionName));
+                QuestionLabel.setText(" "); 
             }
         } catch (Exception e) {
             System.out.println(e);

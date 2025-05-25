@@ -2,11 +2,16 @@ package com.quizlet;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.channels.SelectableChannel;
 import java.sql.SQLException;
+
+/*import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;*/
 
 public class Filework {
     Questions questions;
@@ -36,10 +41,23 @@ public class Filework {
             writer.write(question.getName() + ";" + question.getQuestion() + ";" + question.getAnswer() + ";" + topics.getNameById(Integer.toString(question.getTopic())) + "\n");
            }
             System.out.println("Файл сохранен: " + file.getAbsolutePath());
+            //createPDF();
         } catch (IOException e) {
             System.err.println("Ошибка при сохранении файла: " + e.getMessage());
         }
     }
+
+    /*public void createPDF(){
+        Document document = new Document();
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("itext-example.pdf"));
+            document.open();
+            document.add(new Paragraph("Hello World with iText!"));
+            document.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }*/
 
     public void importData(File  filePath) throws SQLException{
 

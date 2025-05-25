@@ -3,7 +3,6 @@ package com.quizlet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 public class Questions { // Класс для работы с темами квизов
     protected ArrayList<Question> questions = new ArrayList<Question>();
     protected Database d;
@@ -23,6 +22,13 @@ public class Questions { // Класс для работы с темами кв�
     public Question getQuestionByName(String name) throws SQLException { // Метод для получения объекта Question по
                                                                          // названию вопроса
         String[] questionSettings = this.d.getAllByParam("questions", "name", name).get(0);
+        return new Question(questionSettings[0], questionSettings[1], questionSettings[2], questionSettings[3],
+                questionSettings[4]);
+    }
+
+    public Question getQuestionByNameTopic(String name, String topic) throws SQLException { // Метод для получения объекта Question по
+        // названию вопроса и темы
+        String[] questionSettings = this.d.getAllBy2Param("questions", "name", name, "topic", topic).get(0);
         return new Question(questionSettings[0], questionSettings[1], questionSettings[2], questionSettings[3],
                 questionSettings[4]);
     }
@@ -54,11 +60,9 @@ public class Questions { // Класс для работы с темами кв�
                                                                                                                 // добавления
                                                                                                                 // нового
                                                                                                                 // вопроса
-
-        this.d.insertIntoDatabase("questions", "question, name, answer, topic",
-                "'" + question + "','" + name + "','" + answer + "','" + topic + "'");
+        String[] param = { question, name, answer, topic };
+        this.d.executeStatement(param);
     }
-
 
 }
 

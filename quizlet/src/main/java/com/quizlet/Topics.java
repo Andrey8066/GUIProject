@@ -42,7 +42,8 @@ public class Topics { // Класс для работы с темами квиз
     }
 
     public void addNewTopic(String name) throws SQLException { // Метод для добавления новой темы
-        this.d.insertIntoDatabase("topics", "name", "'" + name + "'");
+        String[] param = {name};
+        this.d.insertIntoDatabase("topics", "name", param);
     }
 
     public void print() { // Метод для вывода всех тем и их id
