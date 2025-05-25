@@ -9,7 +9,7 @@
       maxWidth="600">
       
     <!-- Заголовок -->
-    <Label text="Создание нового квиза"
+    <Label text="Создание нового билета"
            style="-fx-font-size: 20; -fx-font-weight: bold;">
         <padding>
             <Insets bottom="10"/>
@@ -18,7 +18,7 @@
 
     <!-- Выбор темы -->
     <HBox alignment="CENTER_LEFT" spacing="15" maxWidth="550">
-        <Label text="Тема квиза:"
+        <Label text="Тема билета:"
                style="-fx-font-weight: bold;"
                minWidth="120" alignment="CENTER_RIGHT"/>
         <ComboBox fx:id="ChooseDirrectoryCombo" promptText="Выберите тему"
@@ -65,7 +65,7 @@
 
     <!-- Кнопки -->
     <HBox spacing="20" alignment="CENTER" maxWidth="550">
-        <Button fx:id="saveQuiz" onAction="#handleSaveQuizButton" text="Сохранить квиз"
+        <Button fx:id="saveQuiz" onAction="#handleSaveQuizButton" text="Сохранить билет"
                 style="-fx-font-size: 14; -fx-font-weight: bold;"
                 prefWidth="180" prefHeight="40"/>
         <Button fx:id="mainmenu" onAction="#handleMainMenuButton" text="Главное меню"

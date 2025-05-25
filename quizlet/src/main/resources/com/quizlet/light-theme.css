@@ -92,3 +92,7 @@
     -fx-background-color: transparent;
 
 }
+
+#logo {
+    -fx-font-size: 30px;
+}

@@ -110,24 +110,36 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 2, 0.3, 0, 0);
 }
 
-.logo {
-    -fx-text-fill: black;
+#logo {
     -fx-font-size: 30px;
 }
 
 .table-view {
     -fx-background-color: #424242;
     -fx-text-fill: white;
+    -fx-border-color: #757575;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #121212 !important;
+    -fx-background-radius: 8 8 0 0;
+    -fx-border-radius: 8 8 0 0;
+    -fx-border-color: transparent transparent #757575 transparent;
+    -fx-border-width: 0 0 1 0;
 }
 
 .table-view .column-header {
-    -fx-background-color: #616161;
+    -fx-background-color: transparent;
     -fx-text-fill: white;
 }
 
 .table-view .table-cell {
     -fx-text-fill: white;
     -fx-border-color: #757575;
+    -fx-border-width: 0 0 0 1;
 }
 
 .table-row-cell {
@@ -136,8 +148,4 @@
 
 .table-row-cell:odd {
     -fx-background-color: #212121;
-}
-
-.table-view .column-header {
-    -fx-background-color: #4CAF50 !important;
 }
