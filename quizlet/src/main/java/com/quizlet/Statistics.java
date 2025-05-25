@@ -23,7 +23,12 @@ public class Statistics { // Класс для работы с отслежив�
     public ArrayList<String> getNamesByTopic(String name) throws SQLException { // Метод для получения результатов решения всех билетов  по теме
         return this.d.getDataByParamWithJoin("statistics", "topics", "statistics.question_id = topics.id", "name",
                 "topics.name", name);
+    }
 
+    public ArrayList<Statistic> getStat(){
+        ArrayList<Statistic> res = new ArrayList();
+        
+        return res;
     }
 
     public float getPercentByQuestionId(String id) throws SQLException { // Метод для получения процента правильных решений по билету
@@ -35,4 +40,17 @@ public class Statistics { // Класс для работы с отслежив�
         return count_right_answers / count_answers * 100;
 
     }
+}
+
+
+class Statistic {
+    protected String name;
+    protected String percent;
+
+    public Statistic (String name, String percent){
+        this.name = name;
+        this.percent = percent;
+    }
+
+    
 }

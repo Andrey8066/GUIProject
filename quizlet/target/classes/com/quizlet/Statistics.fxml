@@ -11,6 +11,9 @@
             onAction="#handleDirrectorySelection" />
     </HBox>
     <VBox fx:id="StatisticsVBox">
+        <TableView fx:id="StatisticsTable">
+
+        </TableView>
 
     </VBox>
     <Button fx:id="mainmenu" onAction="#handleMainMenuButton"

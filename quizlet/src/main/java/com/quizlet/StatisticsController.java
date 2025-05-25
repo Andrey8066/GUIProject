@@ -3,10 +3,13 @@ package com.quizlet;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -16,6 +19,8 @@ public class StatisticsController {
     private ComboBox<String> ChooseDirrectoryCombo;
     @FXML
     private VBox StatisticsVBox;
+    @FXML
+    private TableView StatisticsTable;
     @FXML
     private TextArea Answer;
     private Topics topics;
@@ -34,7 +39,7 @@ public class StatisticsController {
 
     @FXML
     public void handleDirrectorySelection() {
-        StatisticsVBox.getChildren().clear();
+        StatisticsTable.getChildrenUnmodifiable().clear();
         try {
             boolean f = true;
             for (String question_id : this.questions.getIdByTopic(ChooseDirrectoryCombo.getValue())) {
@@ -43,7 +48,7 @@ public class StatisticsController {
                 Label ticketName = new Label(questions.getNameById(question_id));
                 Label percent = new Label(statistics.getPercentByQuestionId(question_id) + " %");
                 statisticHBox.getChildren().addAll(ticketName, percent);
-                StatisticsVBox.getChildren().add(statisticHBox);
+                StatisticsTable.getChildrenUnmodifiable().addAll(ticketName, percent);
                 f = false;
             }
             if (f) {
