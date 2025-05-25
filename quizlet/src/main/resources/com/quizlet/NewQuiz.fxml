@@ -71,9 +71,6 @@
         <Button fx:id="mainmenu" onAction="#handleMainMenuButton" text="Главное меню"
                 style="-fx-font-size: 14; -fx-font-weight: bold;"
                 prefWidth="180" prefHeight="40"/>
-        <Button fx:id="exportQuiz" onAction="#handleExportQuizButton" text="Экспортировать вопросы"
-                style="-fx-font-size: 14; -fx-font-weight: bold;"
-                prefWidth="180" prefHeight="40"/>
     </HBox>
 
     <!-- Отступы всего VBox -->
