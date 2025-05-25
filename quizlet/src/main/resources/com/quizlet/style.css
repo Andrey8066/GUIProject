@@ -82,3 +82,8 @@
     -fx-background-color: rgb(38, 38, 38);
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 2, 0.3, 0, 0);
 }
+
+.logo {
+    -fx-text-fill: black;
+    -fx-font-size: 30px;
+}
