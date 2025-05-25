@@ -1,0 +1,89 @@
+.root {
+    -fx-background-color: rgb(20, 20, 20);
+    -fx-font-family: 'Baumans';
+    -fx-font-size: 16px;
+}
+
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+
+.theme-toggle {
+    -fx-background-color: transparent !important;
+    -fx-background-radius: 0 !important;
+    -fx-border-color: transparent !important;
+    -fx-border-width: 0 !important;
+    -fx-padding: 0 !important;
+    -fx-background-insets: 0 !important;
+    -fx-effect: none !important;
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+    -fx-scale-x: 1 !important;
+    -fx-scale-y: 1 !important;
+    -fx-cursor: hand;
+}
+
+.theme-toggle:hover,
+.theme-toggle:pressed {
+    -fx-background-color: transparent !important;
+    -fx-effect: none !important;
+}
+
+
+.combo-box {
+    -fx-background-color: rgb(46, 46, 46);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 6;
+    -fx-padding: 4 10;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: white;
+    -fx-background-color: rgb(46, 46, 46);
+}
+
+.combo-box:hover {
+    -fx-background-color: rgb(70, 70, 70);
+}
+
+.text-area {
+    -fx-background-color: rgb(30, 30, 30);
+    -fx-control-inner-background: rgb(30, 30, 30);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 6;
+}
+
+.button {
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+    -fx-background-color: rgb(46, 46, 46);
+    -fx-background-radius: 10;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 3, 0.3, 0, 1);
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease-in-out;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+.button:hover {
+    -fx-background-color: rgb(60, 60, 60);
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.2), 4, 0.3, 0, 1);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.button:pressed {
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+    -fx-background-color: rgb(38, 38, 38);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 2, 0.3, 0, 0);
+}
+
+.logo {
+    -fx-text-fill: black;
+    -fx-font-size: 30px;
+}

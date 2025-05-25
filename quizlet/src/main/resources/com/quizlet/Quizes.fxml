@@ -1,27 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="com.quizlet.QuizesController">
-    <HBox fx:id="ChooseDirrectory" spacing="100">
-        <Label text="Выберите тему"></Label>
-        <ComboBox fx:id="ChooseDirrectoryCombo" promptText="Выберите тему"
-            onAction="#handleDirrectorySelection" />
+<VBox xmlns="http://javafx.com/javafx/8.0.171"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.quizlet.QuizesController"
+      spacing="15"
+      alignment="TOP_CENTER"
+      styleClass="root">
+
+    <padding>
+        <Insets top="20" right="30" bottom="20" left="30"/>
+    </padding>
+
+    <!-- Выбор темы -->
+    <HBox spacing="20" alignment="CENTER_LEFT">
+        <Label text="Выберите тему" styleClass="label"/>
+        <ComboBox fx:id="ChooseDirrectoryCombo"
+                  promptText="Выберите тему"
+                  onAction="#handleDirrectorySelection"
+                  styleClass="combo-box"/>
     </HBox>
-    <HBox fx:id="ChooseTicket" spacing="100">
-        <Label text="Выберите билет"></Label>
-        <ComboBox fx:id="ChooseTicketCombo" promptText="Выберите билет"
-            onAction="#handleTicketSelection" />
+
+    <!-- Выбор билета -->
+    <HBox spacing="20" alignment="CENTER_LEFT">
+        <Label text="Выберите билет" styleClass="label"/>
+        <ComboBox fx:id="ChooseTicketCombo"
+                  promptText="Выберите билет"
+                  onAction="#handleTicketSelection"
+                  styleClass="combo-box"/>
     </HBox>
-    <Label fx:id="QuestionLabel" />
-    <HBox fx:id="Quize" spacing="20">
-        <TextArea fx:id="Answer" wrapText="true" promptText="Введите ответ" />
-        <Button fx:id="Clue">Подсказка</Button>
+
+    <!-- Вопрос -->
+    <Label fx:id="QuestionLabel" wrapText="true" styleClass="label"/>
+
+    <!-- Ответ и подсказка -->
+    <HBox spacing="20" alignment="CENTER">
+        <TextArea fx:id="Answer"
+                  wrapText="true"
+                  promptText="Введите ответ"
+                  styleClass="text-area"/>
+        <Button fx:id="Clue" text="Подсказка"/>
     </HBox>
-    <Button fx:id="Next" onAction="#handleNextButton">Сохранить</Button>
-    <Button fx:id="mainmenu" onAction="#handleMainMenuButton"
-        style="-fx-background-color: #ff0000; -fx-text-fill: black"
-        StackPane.alignment="BOTTOM_CENTER"> Главное меню </Button>
+
+    <!-- Кнопка сохранить -->
+    <Button fx:id="Next" text="Сохранить" onAction="#handleNextButton"/>
+
+    <!-- Главное меню -->
+    <Button fx:id="mainmenu"
+            text="Главное меню"
+            onAction="#handleMainMenuButton"/>
 </VBox>

@@ -87,15 +87,17 @@ public class QuizesController {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("checkAnswer.fxml"));
         Parent root = loader.load();
-
-        // Получаем контроллер и передаем параметры
+        
         CheckAnswerController controller = loader.getController();
         controller.initData(this.question.getAnswer(), this.question.getId(), this.Answer.getText());
+
+        Scene newScene = new Scene(root);
+        newScene.getStylesheets().add(this.QuestionLabel.getScene().getStylesheets().get(0));
 
         this.Answer.clear();
         this.QuestionLabel.setText(null);
 
-        checkAnswerstage.setScene(new Scene(root));
+        checkAnswerstage.setScene(newScene);
         checkAnswerstage.show();
     }
 }
