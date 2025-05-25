@@ -1,5 +1,10 @@
 package com.quizlet;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.SQLException;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -11,25 +16,22 @@ import javafx.scene.layout.StackPane;
 public class WelcomeController {
 
     private boolean darkTheme = true;
-
     @FXML
     private Button themeToggleButton;
-
     @FXML
     private ImageView themeIcon;
-
     @FXML
     private StackPane StackPane;
 
+    Questions questions;
+    Topics topics;
     @FXML
-    public void initialize() {
-        
+    public void initialize() throws SQLException{
+        this.questions = new Questions();
+        this.topics = new Topics();
         Platform.runLater(()-> {
             setupHoverEffects();
-            
-        
-        themeIcon
-                .setImage(new Image(getClass().getResource(darkTheme ? "/com/quizlet/images/light_0_button.png"
+        themeIcon.setImage(new Image(getClass().getResource(darkTheme ? "/com/quizlet/images/light_0_button.png"
                 : "/com/quizlet/images/dark_0_button.png").toExternalForm()));
             });
         
@@ -86,5 +88,29 @@ public class WelcomeController {
         }
 
         darkTheme = !darkTheme;
+    }
+
+    @FXML
+    public void exportQuizes() throws Exception {
+        String userHome = System.getProperty("user.home");
+        
+        // Создаем путь к папке "Документы"
+        File documentsDir = new File(userHome, "Documents"); // Для Linux/Mac может быть "Документы"
+        
+        // Проверяем, существует ли папка, иначе создаем
+        if (!documentsDir.exists()) {
+            documentsDir.mkdirs();
+        }
+        
+        // Создаем файл внутри папки "Документы"
+        File file = new File(documentsDir, "example.txt");
+        try (FileWriter writer = new FileWriter(file)) {
+           for (Question question : questions.getAll()){
+            writer.write(question.getName() + ";" + question.getQuestion() + ";" + question.getAnswer() + ";" + topics.getNameById(Integer.toString(question.getTopic())) + "\n");
+           }
+            System.out.println("Файл сохранен: " + file.getAbsolutePath());
+        } catch (IOException e) {
+            System.err.println("Ошибка при сохранении файла: " + e.getMessage());
+        }
     }
 }
