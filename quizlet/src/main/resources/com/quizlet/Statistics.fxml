@@ -11,7 +11,7 @@
             onAction="#handleDirrectorySelection" />
     </HBox>
     <VBox fx:id="StatisticsVBox">
-        <TableView fx:id="StatisticsTable">
+        <TableView fx:id="StatisticsTable" >
             <TableColumn fx:id="NameColumn" text="Вопрос"/>
             <TableColumn fx:id="PercentColumn" text="Правильность выполнения"/>
         </TableView>

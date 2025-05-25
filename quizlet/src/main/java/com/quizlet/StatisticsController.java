@@ -45,6 +45,8 @@ public class StatisticsController {
         NameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         PercentColumn.setCellValueFactory(new PropertyValueFactory<>("percent"));
         StatisticsTable.getColumns().addAll(NameColumn, PercentColumn);
+
+        StatisticsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     @FXML

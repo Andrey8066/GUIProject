@@ -87,3 +87,8 @@
     -fx-border-radius: 6;
     -fx-border-width: 1;
 }
+
+.table-view .col {
+    -fx-background-color: transparent;
+
+}
