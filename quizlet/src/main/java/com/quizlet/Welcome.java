@@ -25,19 +25,19 @@ public class Welcome {
     @FXML
     public void initialize() {
         setupHoverEffects();
-        themeIcon.setImage(new Image(getClass().getResource("/com/quizlet/images/dark_1_button.png").toExternalForm()));
+        themeIcon.setImage(new Image(getClass().getResource("/com/quizlet/images/light_1_button.png").toExternalForm()));
     }
 
     private void setupHoverEffects() {
         themeToggleButton.setOnMouseEntered(e -> {
-            String path = darkTheme ? "/com/quizlet/images/dark_1_button.png"
-                                    : "/com/quizlet/images/light_1_button.png";
+            String path = darkTheme ? "/com/quizlet/images/light_1_button.png"
+                                    : "/com/quizlet/images/dark_1_button.png";
             themeIcon.setImage(new Image(getClass().getResource(path).toExternalForm()));
         });
 
         themeToggleButton.setOnMouseExited(e -> {
-            String path = darkTheme ? "/com/quizlet/images/dark_0_button.png"
-                                    : "/com/quizlet/images/light_0_button.png";
+            String path = darkTheme ? "/com/quizlet/images/light_0_button.png"
+                                    : "/com/quizlet/images/dark_0_button.png";
             themeIcon.setImage(new Image(getClass().getResource(path).toExternalForm()));
         });
     }
@@ -62,15 +62,15 @@ public class Welcome {
         this.scene = StackPane.getScene();
         if (scene == null) return;
 
-        boolean check = scene.getStylesheets().get(0).contains("style.css");
+        boolean check = scene.getStylesheets().get(0).contains("light-theme.css");
         scene.getStylesheets().clear();
 
         if (check) {
-            scene.getStylesheets().add(getClass().getResource("/com/quizlet/light-theme.css").toExternalForm());
-            themeIcon.setImage(new Image(getClass().getResource("/com/quizlet/images/light_0_button.png").toExternalForm()));
-        } else {
             scene.getStylesheets().add(getClass().getResource("/com/quizlet/style.css").toExternalForm());
             themeIcon.setImage(new Image(getClass().getResource("/com/quizlet/images/dark_0_button.png").toExternalForm()));
+        } else {
+            scene.getStylesheets().add(getClass().getResource("/com/quizlet/light-theme.css").toExternalForm());
+            themeIcon.setImage(new Image(getClass().getResource("/com/quizlet/images/light_0_button.png").toExternalForm()));
         }
 
         darkTheme = !darkTheme;
