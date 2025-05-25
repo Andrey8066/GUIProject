@@ -3,11 +3,14 @@ package com.quizlet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 public class Statistics { // Класс для работы с отслеживанием результатов 
     protected Database d;
+    protected Questions q;
 
     public Statistics() throws SQLException { // Конструктор класса
         d = new Database("jdbc:postgresql://10.8.0.1:5432/guipdatabase", "postgres", "123456");
+        q = new Questions();
     }
 
     public void addRes(int answer, String questionId) throws SQLException { // Метод для сохранения результата решения вопроса
@@ -25,9 +28,11 @@ public class Statistics { // Класс для работы с отслежив�
                 "topics.name", name);
     }
 
-    public ArrayList<Statistic> getStat(){
+    public ArrayList<Statistic> getStat(String name) throws SQLException{
         ArrayList<Statistic> res = new ArrayList();
-        
+        for (String question_id : q.getIdByTopic(name)) {
+                res.add(new Statistic(q.getNameById(question_id), getPercentByQuestionId(question_id)));
+        }
         return res;
     }
 
@@ -40,17 +45,4 @@ public class Statistics { // Класс для работы с отслежив�
         return count_right_answers / count_answers * 100;
 
     }
-}
-
-
-class Statistic {
-    protected String name;
-    protected String percent;
-
-    public Statistic (String name, String percent){
-        this.name = name;
-        this.percent = percent;
-    }
-
-    
 }

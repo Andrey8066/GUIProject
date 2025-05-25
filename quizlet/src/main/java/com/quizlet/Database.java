@@ -50,7 +50,7 @@ public class Database { // Класс для работы с psql
 
     public ArrayList<String[]> getDataByParam(String table, String data, String param, String value) throws SQLException { // Метод для получения полей по условию
         ArrayList<String[]> lines = new ArrayList<>();
-        System.out.println("SELECT " + data + " FROM " + table + " WHERE " + param + "=" + value);
+        
         ResultSet r = this.statement
                 .executeQuery("SELECT " + data + " FROM " + table + " WHERE " + param + "=" + value);
 
@@ -79,7 +79,7 @@ public class Database { // Класс для работы с psql
     }
 
     public void insertIntoDatabase(String table1, String values_names, String values) throws SQLException { // Метод для записи в БД
-        System.out.println("INSERT INTO " + table1 + " (" + values_names + ") VALUES (" + values + ")");
+        
         this.statement.execute("INSERT INTO " + table1 + " (" + values_names + ") VALUES (" + values + ")");
     }
 

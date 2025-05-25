@@ -2,17 +2,26 @@ package com.quizlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class StatisticsController {
     @FXML
@@ -20,9 +29,13 @@ public class StatisticsController {
     @FXML
     private VBox StatisticsVBox;
     @FXML
-    private TableView StatisticsTable;
+    private TableView <Statistic> StatisticsTable;
     @FXML
     private TextArea Answer;
+    @FXML
+    private TableColumn<Statistic, String> NameColumn;
+    @FXML
+    private TableColumn<Statistic, String> PercentColumn;
     private Topics topics;
     private Questions questions;
     private Statistics statistics;
@@ -35,27 +48,42 @@ public class StatisticsController {
         for (Topic topic : this.topics.getAll()) {
             ChooseDirrectoryCombo.getItems().add(new String(topic.getName()));
         }
+
+        NameColumn.setPrefWidth(200);
+        NameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        PercentColumn.setCellValueFactory(new PropertyValueFactory<>("percent"));
+        StatisticsTable.getColumns().addAll(NameColumn, PercentColumn);
     }
 
     @FXML
     public void handleDirrectorySelection() {
-        StatisticsTable.getChildrenUnmodifiable().clear();
+        StatisticsTable.getItems().clear();
         try {
-            boolean f = true;
-            for (String question_id : this.questions.getIdByTopic(ChooseDirrectoryCombo.getValue())) {
-                System.out.println(question_id);
-                HBox statisticHBox = new HBox();
-                Label ticketName = new Label(questions.getNameById(question_id));
-                Label percent = new Label(statistics.getPercentByQuestionId(question_id) + " %");
-                statisticHBox.getChildren().addAll(ticketName, percent);
-                StatisticsTable.getChildrenUnmodifiable().addAll(ticketName, percent);
-                f = false;
+            int f = 0;
+            String selectedTopic = ChooseDirrectoryCombo.getValue();
+
+            ArrayList<Statistic> stats = statistics.getStat(selectedTopic);
+            for (Statistic stat : stats){
+                if (!stat.getPercent().contains("NaN")) {
+                    System.out.println(stat.getPercent());
+                StatisticsTable.getItems().addAll(stat);
+                f+=1;}
+                }
+            if (f == 0){
+                Stage noStatistics = new Stage();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("checkAnswer.fxml"));
+                Scene scene = new Scene(loader.load());
+                noStatistics.setWidth(200);
+                noStatistics.setHeight(200);
+
+                noStatistics.setScene(scene);
+                noStatistics.show();
+
             }
-            if (f) {
-                StatisticsVBox.getChildren().add(new Label("Вы еще не проходили вопросы по этой теме"));
-            }
+            
+            
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
