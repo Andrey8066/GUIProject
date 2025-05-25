@@ -34,12 +34,12 @@
                     </padding>
                 </HBox>
                 <HBox alignment="CENTER" spacing="10">
-                    <Label>БОТЯНЯ</Label>
+                    <Label fx:id="logo">БотянЯ</Label>
                 </HBox>
                 <HBox alignment="CENTER" spacing="10">
                     <children>
-                        <Button text="Создать квиз" onAction="#newQuiz" prefWidth="200" prefHeight="80"/>
-                        <Button text="Посмотреть мои квизы" onAction="#openQuizes" prefWidth="200" prefHeight="80"/>
+                        <Button text="Создать билет" onAction="#newQuiz" prefWidth="200" prefHeight="80"/>
+                        <Button text="Решать билеты" onAction="#openQuizes" prefWidth="200" prefHeight="80"/>
                         <Button text="Статистика" onAction="#Statistic" prefWidth="200" prefHeight="80"/>
                     </children>
                     <padding>
