@@ -21,7 +21,7 @@ public class Filework {
     public Filework() throws SQLException{
         this.topics = new Topics();
         this.questions = new Questions();
-        this.database = new Database("jdbc:postgresql://10.8.0.1:5432/guipdatabase", "postgres", "123456");
+        this.database = new Database("jdbc:postgresql://127.0.0.1:5432/guipdatabase", "postgres", "123456");
         }
     public void exportData() throws SQLException{
         String userHome = System.getProperty("user.home");
@@ -80,7 +80,7 @@ public class Filework {
     }
 
     public void clearDatabase() throws SQLException{
-        
+        System.out.println("TRUNCATE TABLE questions, topics, statistics");
         database.execCommand("TRUNCATE TABLE questions, topics, statistics");
         }
 }

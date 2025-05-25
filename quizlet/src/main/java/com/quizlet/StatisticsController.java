@@ -70,10 +70,11 @@ public class StatisticsController {
             }
             if (f == 0) {
                 Stage noStatistics = new Stage();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("checkAnswer.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("noStatistics.fxml"));
                 Scene scene = new Scene(loader.load());
-                noStatistics.setWidth(200);
-                noStatistics.setHeight(200);
+                scene.getStylesheets().add(this.StatisticsVBox.getScene().getStylesheets().get(0));
+                noStatistics.setWidth(500);
+                noStatistics.setHeight(100);
 
                 noStatistics.setScene(scene);
                 noStatistics.show();

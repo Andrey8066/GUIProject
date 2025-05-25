@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+
+<?import javafx.scene.control.*?>
+
+
+<?import javafx.scene.layout.*?>
+
+
+
+
+
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quizlet.CheckAnswerController" alignment="CENTER">
+
+    <HBox spacing="20" alignment="CENTER"><Label alignment="CENTER"> Вы еще не решали билеты по этой теме</Label></HBox>
+</VBox>

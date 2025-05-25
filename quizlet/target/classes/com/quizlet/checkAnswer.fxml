@@ -1,55 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
-
-
-
 <?import javafx.scene.control.*?>
-
-
 <?import javafx.scene.layout.*?>
 
-
-
-
-
 <VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quizlet.CheckAnswerController">
-
-
-    <HBox fx:id="RightAnswerBox" spacing="100" >
-
-
-        <Label text="Правильный ответ:"></Label>
-
-
-        <Label fx:id="RightAnswer"></Label>
-
-
-    </HBox>
-
-
-    <HBox fx:id="UserAnswerBox" spacing="100">
-
-
-        <Label text="Ваш ответ:"></Label>
-
-
-        <Label fx:id="UserAnswer"></Label>
-
-
-    </HBox>
-
-
-    <HBox>
-
-
+    <HBox spacing="10" alignment="CENTER">
+        <VBox alignment="CENTER_LEFT">
+        <Label text="Правильный ответ:" HBox.hgrow="ALWAYS"/>
+        <Label text="Ваш ответ:" HBox.hgrow="ALWAYS"/>
+        
+    </VBox>
+    <VBox alignment="CENTER_LEFT">
+        <Label fx:id="RightAnswer" HBox.hgrow="ALWAYS" />
+        <Label fx:id="UserAnswer" HBox.hgrow="ALWAYS" />
+    </VBox>
+</HBox>
+    
+    <HBox alignment="CENTER" spacing="10">
         <Button fx:id="RightAnswerButton" onAction="#handleRightAnswerButton">Ответ верен</Button>
-
-
-        <Button fx:id="WrongAnswerButton" onAction="#handleWrongAnswerButton" > Ответ неверен </Button>
-
-
+        <Button fx:id="WrongAnswerButton" onAction="#handleWrongAnswerButton">Ответ неверен</Button>
     </HBox>
-
-
 </VBox>

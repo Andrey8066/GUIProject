@@ -42,7 +42,6 @@
                   wrapText="true"
                   promptText="Введите ответ"
                   styleClass="text-area"/>
-        <Button fx:id="Clue" text="Подсказка"/>
     </HBox>
 
     <!-- Кнопка сохранить -->
