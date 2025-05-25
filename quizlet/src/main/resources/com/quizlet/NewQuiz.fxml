@@ -17,7 +17,8 @@
     </Label>
 
     <!-- Выбор темы -->
-    <HBox alignment="CENTER_LEFT" spacing="15" maxWidth="550">
+    <VBox alignment="CENTER_LEFT" spacing="15" maxWidth="550" fx:id="chooseDirrectoryHBox">
+        <HBox>
         <Label text="Тема билета:"
                style="-fx-font-weight: bold;"
                minWidth="120" alignment="CENTER_RIGHT"/>
@@ -25,7 +26,8 @@
                   onAction="#handleDirrectorySelection"
                   style="-fx-font-size: 14;"
                   prefWidth="400" maxWidth="400"/>
-    </HBox>
+        </HBox>
+    </VBox>
 
     <!-- Поля ввода -->
     <VBox fx:id="NewQuizVBox" spacing="15"

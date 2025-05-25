@@ -114,4 +114,9 @@ public class WelcomeController {
         filework.importData(selectedFile);
         
     }
+
+    @FXML
+    public void clearQuizes() throws Exception{
+        filework.clearDatabase();
+    }
 }

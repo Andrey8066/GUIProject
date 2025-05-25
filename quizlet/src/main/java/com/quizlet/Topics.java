@@ -28,7 +28,13 @@ public class Topics { // Класс для работы с темами квиз
     }
 
     public String getIdByName(String name) throws SQLException { // Метод для получения id темы по ее названию
-        return this.d.getDataByParam("topics", "id", "name", "'" + name + "'").get(0)[0];
+        ArrayList<String[]> input = this.d.getDataByParam("topics", "id", "name", "'" + name + "'");
+        if (input.size() == 0){
+            return null;
+        }
+        else return input.get(0)[0];
+        
+
     }
 
     public String getNameById(String id) throws SQLException { // Метод для получения названия темы по ее id
@@ -44,6 +50,7 @@ public class Topics { // Класс для работы с темами квиз
             this.topics.get(i).print();
         }
     }
+
 }
 
 class Topic { // Класс объекта topic

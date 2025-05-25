@@ -11,10 +11,13 @@ import java.sql.SQLException;
 public class Filework {
     Questions questions;
     Topics topics;
+    Database database;
+
     public Filework() throws SQLException{
         this.topics = new Topics();
         this.questions = new Questions();
-    }
+        this.database = new Database("jdbc:postgresql://10.8.0.1:5432/guipdatabase", "postgres", "123456");
+        }
     public void exportData() throws SQLException{
         String userHome = System.getProperty("user.home");
         
@@ -42,9 +45,12 @@ public class Filework {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
+
             while ((line = reader.readLine()) != null) {
+                System.out.println(line);
                 String[] parts = line.split(";");
-                if (topics.getIdByName(parts[3]).contains("NaN"))
+                System.out.println(parts);
+                if (topics.getIdByName(parts[3])== null)
                 {
                     topics.addNewTopic(parts[3]);
                 }
@@ -54,4 +60,9 @@ public class Filework {
             System.err.println("Ошибка чтения файла: " + e.getMessage());
         }
     }
+
+    public void clearDatabase() throws SQLException{
+        
+        database.execCommand("TRUNCATE TABLE questions, topics, statistics");
+        }
 }

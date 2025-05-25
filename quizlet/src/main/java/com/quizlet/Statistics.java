@@ -58,4 +58,7 @@ public class Statistics { // Класс для работы с отслежив�
         return count_right_answers / count_answers * 100;
 
     }
+
+    public void clearTable() throws SQLException{
+    }
 }

@@ -17,7 +17,7 @@ public class NewQuizController {
     @FXML
     private ComboBox<String> ChooseDirrectoryCombo;
     @FXML
-    private HBox ChooseDirrectory;
+    private VBox chooseDirrectoryHBox;
     @FXML
     private VBox NewQuizVBox;
     @FXML
@@ -53,10 +53,10 @@ public class NewQuizController {
 
                 this.newTopic = new TextArea();
                 newTopic.setPrefSize(100, 20);
-                ChooseDirrectory.getChildren().add(newTopic);
+                chooseDirrectoryHBox.getChildren().add(newTopic);
             } else {
                 newQuizTopic = ChooseDirrectoryCombo.getValue();
-                ChooseDirrectory.getChildren().remove(newTopic);
+                chooseDirrectoryHBox.getChildren().remove(newTopic);
             }
         } catch (Exception e) {
             System.out.println(e);

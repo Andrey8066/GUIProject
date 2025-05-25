@@ -98,4 +98,8 @@ public class Database { // Класс для работы с psql
         this.statement.execute(
                 "UPDATE " + table1 + " SET " + value_name + " = " + value + " WHERE " + param + " = " + paramValue);
     }
+
+    public void execCommand(String command) throws SQLException{
+        this.statement.execute(command );
+    }   
 }

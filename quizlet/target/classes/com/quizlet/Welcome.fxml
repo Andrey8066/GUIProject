@@ -53,6 +53,7 @@
                     <children>
                     <Button text="Экспортировать билеты" onAction="#exportQuizes" prefWidth="200" prefHeight="50"/>
                     <Button text="Импортировать билеты" onAction="#importQuizes" prefWidth="200" prefHeight="50"/>
+                    <Button text="Удалить билеты" onAction="#clearQuizes" prefWidth="200" prefHeight="50"/>
                     </children>
                     <padding>
                         <Insets top="30"/>

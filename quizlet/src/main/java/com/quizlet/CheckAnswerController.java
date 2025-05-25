@@ -32,6 +32,7 @@ public class CheckAnswerController {
     }
 
     public void initData(String rightAnswer, int questionId, String userAnswer) {
+        System.out.println(rightAnswer+ questionId+ userAnswer);
         this.question_id = questionId;
         RightAnswer.setText(rightAnswer);
         UserAnswer.setText(userAnswer);

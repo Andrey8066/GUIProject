@@ -3,6 +3,7 @@ package com.quizlet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 public class Questions { // Класс для работы с темами квизов
     protected ArrayList<Question> questions = new ArrayList<Question>();
     protected Database d;
@@ -57,6 +58,7 @@ public class Questions { // Класс для работы с темами кв�
         this.d.insertIntoDatabase("questions", "question, name, answer, topic",
                 "'" + question + "','" + name + "','" + answer + "','" + topic + "'");
     }
+
 
 }
 
