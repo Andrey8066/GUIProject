@@ -1,30 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="com.quizlet.NewQuizController">
-    <HBox fx:id="ChooseDirrectory" spacing="100">
-        <Label text="Выберите тему"></Label>
+      fx:controller="com.quizlet.NewQuizController" spacing="20"
+      maxWidth="600">
+      
+    <!-- Заголовок -->
+    <Label text="Создание нового квиза"
+           style="-fx-font-size: 20; -fx-font-weight: bold;">
+        <padding>
+            <Insets bottom="10"/>
+        </padding>
+    </Label>
+
+    <!-- Выбор темы -->
+    <HBox alignment="CENTER_LEFT" spacing="15" maxWidth="550">
+        <Label text="Тема квиза:"
+               style="-fx-font-weight: bold;"
+               minWidth="120" alignment="CENTER_RIGHT"/>
         <ComboBox fx:id="ChooseDirrectoryCombo" promptText="Выберите тему"
-            onAction="#handleDirrectorySelection" />
+                  onAction="#handleDirrectorySelection"
+                  style="-fx-font-size: 14;"
+                  prefWidth="400" maxWidth="400"/>
     </HBox>
-    <VBox fx:id="NewQuizVBox">
-        <HBox>
-            <Label>Введите вопрос </Label>
-            <TextArea fx:id="NewQuizQuestion"> </TextArea>
-        </HBox>
-        <HBox>
-            <Label>Введите название для вопроса </Label>
-            <TextArea fx:id="NewQuizName"> </TextArea>
-        </HBox>
-        <HBox>
-            <Label>Введите ответ на вопрос </Label>
-            <TextArea fx:id="NewQuizAnswer"> </TextArea>
-        </HBox>
+
+    <!-- Поля ввода -->
+    <VBox fx:id="NewQuizVBox" spacing="15"
+          style="-fx-background-radius: 5;"
+          maxWidth="550">
+        <padding>
+            <Insets top="15" right="15" bottom="15" left="15"/>
+        </padding>
+
+        <!-- Вопрос -->
+        <VBox spacing="5">
+            <Label text="Вопрос:"
+                   style="-fx-font-weight: bold;"/>
+            <TextArea fx:id="NewQuizQuestion"
+                      style="-fx-font-size: 14;"
+                      prefHeight="80" prefWidth="500" maxWidth="500" wrapText="true"/>
+        </VBox>
+
+        <!-- Название вопроса -->
+        <VBox spacing="5">
+            <Label text="Название вопроса:"
+                   style="-fx-font-weight: bold;"/>
+            <TextArea fx:id="NewQuizName"
+                      style="-fx-font-size: 14;"
+                      prefHeight="40" prefWidth="500" maxWidth="500" wrapText="true"/>
+        </VBox>
+
+        <!-- Ответ -->
+        <VBox spacing="5">
+            <Label text="Ответ:"
+                   style="-fx-font-weight: bold;"/>
+            <TextArea fx:id="NewQuizAnswer"
+                      style="-fx-font-size: 14;"
+                      prefHeight="120" prefWidth="500" maxWidth="500" wrapText="true"/>
+        </VBox>
     </VBox>
-    <Button fx:id="saveQuiz" onAction="#handleSaveQuizButton"> Сохранить квиз </Button>
-    <Button fx:id="mainmenu" onAction="#handleMainMenuButton"
-        StackPane.alignment="BOTTOM_CENTER"> Главное меню </Button>
+
+    <!-- Кнопки -->
+    <HBox spacing="20" alignment="CENTER" maxWidth="550">
+        <Button fx:id="saveQuiz" onAction="#handleSaveQuizButton" text="Сохранить квиз"
+                style="-fx-font-size: 14; -fx-font-weight: bold;"
+                prefWidth="180" prefHeight="40"/>
+        <Button fx:id="mainmenu" onAction="#handleMainMenuButton" text="Главное меню"
+                style="-fx-font-size: 14; -fx-font-weight: bold;"
+                prefWidth="180" prefHeight="40"/>
+    </HBox>
+
+    <!-- Отступы всего VBox -->
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
 </VBox>
