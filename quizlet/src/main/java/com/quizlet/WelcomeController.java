@@ -104,7 +104,7 @@ public class WelcomeController {
         
         // Добавление фильтров расширений
         fileChooser.getExtensionFilters().addAll(
-            new FileChooser.ExtensionFilter("Текстовые файлы", "*.txt"),
+            new FileChooser.ExtensionFilter("Текстовые файлы", "*.csv"),
             new FileChooser.ExtensionFilter("Все файлы", "*.*")
         );
         
