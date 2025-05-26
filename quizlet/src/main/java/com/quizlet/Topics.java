@@ -8,7 +8,7 @@ public class Topics { // Класс для работы с темами квиз
     protected Database d;
 
     public Topics() throws SQLException { // Конструктор класса
-        d = new Database("jdbc:postgresql://127.0.0.1:5432/guipdatabase", "postgres", "123456");
+        d = new Database("jdbc:postgresql://10.8.0.1:5432/guipdatabase", "postgres", "123456");
 
         for (String[] row : d.getAll("topics")) {
             this.topics.add(new Topic(row[0], row[1]));

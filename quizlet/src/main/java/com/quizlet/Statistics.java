@@ -8,7 +8,7 @@ public class Statistics { // Класс для работы с отслежив�
     protected Questions q;
 
     public Statistics() throws SQLException { // Конструктор класса
-        d = new Database("jdbc:postgresql://127.0.0.1:5432/guipdatabase", "postgres", "123456");
+        d = new Database("jdbc:postgresql://10.8.0.1:5432/guipdatabase", "postgres", "123456");
         q = new Questions();
     }
 
