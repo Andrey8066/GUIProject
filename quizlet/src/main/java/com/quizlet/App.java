@@ -21,8 +21,7 @@ public class App extends Application {
         Font.loadFont(getClass().getResource("/fonts/Baumans-Regular.ttf").toExternalForm(), 12);
         scene = new Scene(FXMLLoader.load(getClass().getResource("/com/quizlet/Welcome.fxml")));
         scene.getStylesheets().add(getClass().getResource("/com/quizlet/light-theme.css").toExternalForm());
-        stage.setHeight(1000);
-        stage.setHeight(500);
+        stage.setHeight(550);
         stage.setScene(scene);
         stage.show();
     }
