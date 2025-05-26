@@ -18,6 +18,7 @@
         </TableView>
 
     </VBox>
-    <Button fx:id="mainmenu" onAction="#handleMainMenuButton"
-        StackPane.alignment="BOTTOM_CENTER"> Главное меню </Button>
+    <HBox alignment="BOTTOM_CENTER">
+        <Button fx:id="mainmenu" onAction="#handleMainMenuButton"> Главное меню </Button>
+    </HBox>
 </VBox>
